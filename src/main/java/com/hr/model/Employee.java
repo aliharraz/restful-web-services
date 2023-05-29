@@ -15,27 +15,27 @@ public class Employee {
 	
 	  @Id
 	  @Column(name="employee_id")
-      private Long id;
+      public Long id;
 	  @Column(name="first_name")
-      String name;
+      public String name;
 	  @Column(name="last_name")
-      String last_name;
+      public String last_name;
 	  @Column(name="email")
-      String email;
+      public String email;
 	  @Column(name="phone_number")
-      String phone_number;
+      public String phone_number;
 	  @Column(name="hire_date")
-      Date hire_date;
+      public Date hire_date;
 	  @Column(name="job_id")
-      String job_id;
+      public String job_id;
 	  @Column(name="salary")
-	  double salary;
+	  public double salary;
 	  @Column(name="commission_pct")
-	  Double commission_pct;
+	  public Double commission_pct;
 	  @Column(name="manager_id")
-      Long manager_id;
+	  public Long manager_id;
 	  @Column(name="department_id")
-      Long department_id;
+	  public Long department_id;
       
    
 	public Employee(Long id, String firstName, String last_name, String email, String phone_number, Date hire_date,

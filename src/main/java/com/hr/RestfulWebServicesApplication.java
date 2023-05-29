@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages ={"com.hr" , "com.javatpoint"})
+@ComponentScan(basePackages ={"com.hr" , })
 	
 public class RestfulWebServicesApplication {
 

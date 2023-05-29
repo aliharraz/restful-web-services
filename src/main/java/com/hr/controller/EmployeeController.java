@@ -1,11 +1,8 @@
 package com.hr.controller;
 
-import java.util.*;
-
-
-
-
+import java.util.*; 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hr.model.Employee;
 import com.hr.services.EmployeeService;
 
+import org.springframework.ui.Model;
 
-@RestController
+
+@Controller
 public class EmployeeController {
 
 	
@@ -25,22 +24,28 @@ public class EmployeeController {
 	private EmployeeService empService;
 	
 	@GetMapping("/emps")
-	public List<Employee> getAllEmployees(){	    
-	    return empService.getAllEmployees();
+	public String emps(Model model){
+		 List<Employee> employees = empService.getAllEmployees();
+	     model.addAttribute("employees", employees);
+	     return "emps";
 	}
+	
+	
+
 	@GetMapping("/emps/{id}")
-	public Employee getOneEmployee(@PathVariable Long id) {
-	    return empService.getEmployeeById(id);
+	public String getOneEmployee(@PathVariable Long id,Model model) {
+	    model.addAttribute("employee", empService.getEmployeeById(id));
+	    return "profil";
 	}
-	@GetMapping("/emps/byFirstName/{firstName}")
+	/*@GetMapping("/emps/byFirstName/{firstName}")
 	public List<Employee> getEmpByFirstName(@PathVariable String firstName){
 	    return empService.findByFirstName(firstName);
-	}
-	@PostMapping("/emps/addEmp")
+	}*/
+	@PostMapping("/emps/addEmployee")
 	public void addEmployee(@RequestBody Employee e) {
 		empService.addOne(e);
 	}
-	@DeleteMapping("/delete/{id}")
+	@GetMapping("/delete/{id}")
 	public void deleteEmployee(@PathVariable Long id) {
 	     empService.deleteEmployee(id);
 	}
