@@ -6,6 +6,7 @@ import java.util.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +26,13 @@ public class EmployeeController {
 	private EmployeeService empService;
 	
 	@GetMapping("/emps")
-	public List<Employee> getAllEmployees(){	    
+	/*public List<Employee> getAllEmployees(){
 	    return empService.getAllEmployees();
+	}*/
+	public String ListEmployee(Model model) {
+		List<Employee> employee=empService.getAllEmployees();
+		model.addAttribute("employee",employee);
+		return "vue";
 	}
 	@GetMapping("/emps/{id}")
 	public Employee getOneEmployee(@PathVariable Long id) {
@@ -36,7 +42,7 @@ public class EmployeeController {
 	public List<Employee> getEmpByFirstName(@PathVariable String firstName){
 	    return empService.findByFirstName(firstName);
 	}
-	@PostMapping("/emps/addEmp")
+	@PostMapping("/emps/addEmployee")
 	public void addEmployee(@RequestBody Employee e) {
 		empService.addOne(e);
 	}
