@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+  <title>Upadate Employee</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/css/styleTab.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+    <body id="page-top">   
+          <div class="tabEmployees" style="margin: 71px 10px;">
+                 <table id="employee-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Hire Date</th>
+                <th>Job ID</th>
+                <th>Salary</th>
+                <th>Manager ID</th>
+                <th>Department ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+          
+             <!--  <tr th:each="employee : ${employees}">
+                <td><a th:text="${employee.name}" href="/emps/">yes</a></td>
+                <td th:text="${employee.last_name}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.phone_number}"></td>
+                <td class="hire_date" th:text="${employee.hire_date}"></td>
+                <td th:text="${employee.job_id}"></td>
+                <td th:text="${employee.salary}"></td>
+                <td th:text="${employee.manager_id}"></td>
+                <td th:text="${employee.department_id}"></td>
+                <td>
+                   <div class="btns">
+                       <button class="update-btn"><a th:href="@{/emps/{id}(id=${employee.id})}">Update</a></button>
+                       <button class="delete-btn">Delete</button>
+                   </div>
+                </td>
+            </tr>-->
+            
+             <tr th:each="employee : ${employees}">
+		            <!--<td th:text="${employee.name}"><a th:href="@{/emps/{id}(id=${employee.id})}"><i class="fa-sharp fa-solid fa-eye"></i></a></td>-->
+		            <td>
+					  <div class="employee-name">
+						  <span th:text="${employee.name}"></span>
+					  <a th:href="@{/emps/{id}(id=${employee.id})}">
+					    <i class="fa-sharp fa-solid fa-eye"></i>
+					  </a>
+					  </div>
+					</td>
+
+		            <td th:text="${employee.last_name}"></td>
+		            <td th:text="${employee.email}"></td>
+		            <td th:text="${employee.phone_number}"></td>
+		            <td  class="hire_date" th:text="${employee.hire_date}"></td>
+		            <td th:text="${employee.job_id}"></td>
+		            <td th:text="${employee.salary}"></td>
+		            <td th:text="${employee.manager_id}"></td>
+		            <td th:text="${employee.department_id}"></td>
+		            <td>
+                   <div class="btns">
+                       <button class="update-btn"><a th:href="@{/emps/{id}(id=${employee.id})}">Update</a></button>
+                       <button class="delete-btn"><a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a></button>
+                   </div>
+                </td>
+        </tr>
+            </tbody>
+          </table>
+          </div>
+    </body>
+</html>
